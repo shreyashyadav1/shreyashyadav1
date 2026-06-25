@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/shreyashyadav" target="_blank">
+  <a href="https://www.linkedin.com/in/shreyash-yadav-6136991b2/" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
   &nbsp;
@@ -112,7 +112,7 @@ A real-time meeting intelligence platform.
 <p align="center">
   <a href="mailto:yadav.shre@northeastern.edu">yadav.shre@northeastern.edu</a>
   &nbsp;·&nbsp;
-  <a href="https://www.linkedin.com/in/shreyashyadav">LinkedIn</a>
+  <a href="https://www.linkedin.com/in/shreyash-yadav-6136991b2/">LinkedIn</a>
   &nbsp;·&nbsp;
   <a href="https://shreyashyadav.vercel.app">Portfolio</a>
 </p>
