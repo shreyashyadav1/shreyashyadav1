@@ -1,11 +1,12 @@
+```markdown
 <h1 align="center">Shreyash Yadav</h1>
 
 <p align="center">
-  <strong>Software Engineer &nbsp;·&nbsp; Full-Stack &amp; AI Engineer</strong>
+  <strong>AI/ML Engineer &nbsp;·&nbsp; Full-Stack Engineer</strong>
 </p>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/shreyash-yadav-6136991b2/" target="_blank">
+  <a href="https://www.linkedin.com/in/shreyashyadavai" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
   &nbsp;
@@ -16,10 +17,11 @@
   <a href="mailto:yadav.shre@northeastern.edu">
     <img src="https://img.shields.io/badge/Email-EA4335?style=flat&logo=gmail&logoColor=white" alt="Email" />
   </a>
-  &nbsp;
-  <a href="https://github.com/shreyashyadav1" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub" />
-  </a>
+</p>
+
+<p align="center">
+  Graduating <strong>December 2026</strong> — MS Information Systems, Northeastern University<br/>
+  Seeking full-time <strong>AI/ML Engineer</strong> and <strong>Software Engineer</strong> roles
 </p>
 
 ---
@@ -30,30 +32,68 @@ I build production-ready AI applications and scalable backend systems. My focus 
 
 ---
 
+## Featured Projects
+
+### IntelliClaim AI — Insurance Document Intelligence
+
+**[Repo](https://github.com/shreyashyadav1/intelliclaim-ai)**
+
+An AI-powered platform that automates insurance claim review end to end.
+
+- OCR ingestion → semantic chunking → vector search over policy documents, medical reports, and invoices
+- Fraud-risk scoring combining LLM reasoning over retrieved evidence, rule-based validation, and anomaly detection
+- Surfaces missing fields, duplicate submissions, and suspicious billing patterns
+- **Groq (Llama 3.3 70B) · LangChain · LlamaIndex · ChromaDB · FastEmbed · FastAPI · React · MongoDB Atlas · Docker**
+
+### MeetSense AI — Real-Time Meeting Intelligence
+
+**[Repo](https://github.com/shreyashyadav1/MeetSense)**
+
+Turns live audio into a searchable, structured record of a meeting.
+
+- Live transcription with speaker diarization streamed over WebSockets via Deepgram nova-2
+- AI-generated summaries, action items, key decisions, and follow-up drafts from finalized transcript segments
+- Event-driven pipeline using Redis pub/sub with async fallback for low-latency distribution across concurrent sessions
+- **React 19 · TypeScript · FastAPI · Deepgram · WebSockets · Redis · PostgreSQL · SQLAlchemy 2.0 async · Groq**
+
+---
+
+## Currently Building
+
+Production-grade AI systems with real reliability and latency constraints, not demo-quality pipelines. Current interests:
+
+- **RAG at scale** — hybrid search, re-ranking, and context-aware retrieval over large document corpora
+- **Real-time AI** — streaming inference, live transcription pipelines, and low-latency voice intelligence
+- **Multi-agent workflows** — orchestrating autonomous agents for document processing, analysis, and decision support
+- **AI developer tooling** — infrastructure and abstractions that make building LLM applications faster and more maintainable
+
+---
+
 ## Tech Stack
-
-**Languages**
-
-![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
-
-**Frontend**
-
-![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
-
-**Backend & Frameworks**
-
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat&logo=springboot&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
 
 **AI / ML**
 
 ![LangChain](https://img.shields.io/badge/LangChain-000000?style=flat&logo=chainlink&logoColor=white)
 ![LlamaIndex](https://img.shields.io/badge/LlamaIndex-6929C4?style=flat&logoColor=white)
 ![Groq](https://img.shields.io/badge/Groq-F55036?style=flat&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)
 ![ChromaDB](https://img.shields.io/badge/ChromaDB-1A1A2E?style=flat&logoColor=white)
+
+**Languages**
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white)
+
+**Backend**
+
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat&logo=springboot&logoColor=white)
+
+**Frontend**
+
+![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
 
 **Databases**
 
@@ -68,51 +108,11 @@ I build production-ready AI applications and scalable backend systems. My focus 
 
 ---
 
-## Currently Building
-
-I'm focused on AI systems that go beyond demo-quality — production-grade pipelines with real reliability and latency constraints. Current interests:
-
-- **RAG at scale** — hybrid search, re-ranking, and context-aware retrieval over large document corpora
-- **Real-time AI** — streaming inference, live transcription pipelines, and low-latency voice intelligence
-- **Multi-agent workflows** — orchestrating autonomous agents for document processing, analysis, and decision support
-- **AI developer tooling** — infrastructure and abstractions that make building LLM applications faster and more maintainable
-
----
-
-## Featured Projects
-
-### IntelliClaim AI
-An AI-powered insurance document intelligence platform.
-
-- OCR ingestion → semantic chunking → vector search over policy documents and claims
-- Fraud-risk scoring using LLM reasoning over retrieved evidence
-- Built with **Groq · LangChain · LlamaIndex · ChromaDB · FastEmbed · FastAPI · React**
-
----
-
-### MeetSense AI
-A real-time meeting intelligence platform.
-
-- Live transcription with sub-second latency via Deepgram
-- Automatic AI-generated summaries, action items, and meeting insights streamed to the client
-- Built with **React · TypeScript · FastAPI · Deepgram · Redis · PostgreSQL · Groq**
-
----
-
-## GitHub Stats
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=shreyashyadav1&show_icons=true&theme=github_dark&hide_border=true&include_all_commits=true&count_private=true" alt="GitHub Stats" height="165" />
-  &nbsp;
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=shreyashyadav1&layout=compact&theme=github_dark&hide_border=true&langs_count=8" alt="Top Languages" height="165" />
-</p>
-
----
-
 <p align="center">
   <a href="mailto:yadav.shre@northeastern.edu">yadav.shre@northeastern.edu</a>
   &nbsp;·&nbsp;
-  <a href="https://www.linkedin.com/in/shreyash-yadav-6136991b2/">LinkedIn</a>
+  <a href="https://www.linkedin.com/in/shreyashyadavai">LinkedIn</a>
   &nbsp;·&nbsp;
   <a href="https://shreyashyadav.vercel.app">Portfolio</a>
 </p>
+```
