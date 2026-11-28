@@ -25,6 +25,7 @@ I'm a software engineer with three years of full-time production work at NodeOps
 
 ## Experience
 
+- **Cybersenz**, Software Engineering Intern (co-op), 2026: agentic workflows in Python and Playwright that worked through a health insurer's portals and cut manual data collection by 60%, plus LLM pipelines that pulled 75+ structured fields from insurance conversations.
 - **NodeOps**, Software Engineer, 2023 to 2024: Go and TypeScript APIs that automated blockchain node deployments across 20+ protocols, and Next.js dashboards for NodeOps Console.
 - **WHP Jewellers**, Full Stack Developer, 2021 to 2023: e-commerce modules in React, Node.js and Spring Boot for a $10M-funded omnichannel platform, with JWT login and role-based access.
 
