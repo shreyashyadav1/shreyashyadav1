@@ -5,29 +5,23 @@
 </p>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/shreyashyadavai" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn" />
-  </a>
-  &nbsp;
-  <a href="https://shreyashyadav.vercel.app" target="_blank">
-    <img src="https://img.shields.io/badge/Portfolio-000000?style=flat&logo=vercel&logoColor=white" alt="Portfolio" />
-  </a>
-  &nbsp;
-  <a href="mailto:shreyashyadav.work@gmail.com">
-    <img src="https://img.shields.io/badge/Email-EA4335?style=flat&logo=gmail&logoColor=white" alt="Email" />
-  </a>
+  MS Information Systems, Northeastern University, graduating <strong>December 2026</strong><br/>
+  Looking for full-time <strong>Software Engineer</strong> and <strong>AI Engineer</strong> roles
 </p>
 
 <p align="center">
-  MS Information Systems, Northeastern University, graduating <strong>December 2026</strong><br/>
-  Looking for full-time <strong>Software Engineer</strong> and <strong>AI Engineer</strong> roles
+  <a href="https://www.linkedin.com/in/shreyashyadavai">LinkedIn</a>
+  &nbsp;·&nbsp;
+  <a href="https://shreyashyadav.vercel.app">Portfolio</a>
+  &nbsp;·&nbsp;
+  <a href="mailto:shreyashyadav.work@gmail.com">shreyashyadav.work@gmail.com</a>
 </p>
 
 ---
 
 ## About Me
 
-I'm a software engineer with three years of full-time production work at NodeOps and WHP Jewellers, and I build AI agents for real business workflows along with the code that keeps them in check. My focus is the engineering around the model: validating what it returns, deciding when a person has to approve, and writing tests that catch it when something breaks.
+I'm a software engineer with three years of full-time production work at NodeOps and WHP Jewellers. I build LLM applications and agents, and most of that work is the engineering around the model: validating what it returns, deciding when a person has to approve an action, and measuring the result with evaluations, benchmarks and load tests.
 
 ## Experience
 
@@ -37,112 +31,79 @@ I'm a software engineer with three years of full-time production work at NodeOps
 
 ---
 
-## Featured Projects
+## Projects
 
-### OpsPilot: AI On-Call Agent
+Every figure below comes from the project's own repository, which documents how it was measured and its limits.
 
-**[Repo](https://github.com/shreyashyadav1/opspilot)**
+### OpsPilot: incident-response agent
 
-An on-call agent that investigates incidents and can't roll anything back until a person approves.
+[Repository](https://github.com/shreyashyadav1/opspilot)
 
-- Digs through logs, Prometheus metrics, deploy history and service health with MCP tools, then returns a Pydantic-validated root-cause diagnosis
-- Fault-injectable microservice system (FastAPI, Spring Boot, PostgreSQL, Prometheus on Docker Compose) with a chaos API
-- 11-scenario fault-injection benchmark with known root causes, run in CI
-- **LangGraph · MCP · FastAPI · Spring Boot · Next.js · TypeScript · PostgreSQL · Docker**
+When an alert fires in a small microservice system, a LangGraph agent investigates it through an MCP server (service health, Prometheus metrics, logs, deploy history), names the root-cause service and fault category in a Pydantic-validated diagnosis, and can roll back a deploy only after a person approves it.
 
-### IntelliClaim AI: Insurance Document Intelligence
+- The system under investigation is a Docker Compose stack of FastAPI and Spring Boot services, Postgres and Prometheus, with a control plane that injects six kinds of fault and records the ground truth.
+- Operator dashboard in Next.js and TypeScript on a FastAPI agent API: a live timeline of every model turn and tool call, approve and reject, optional role-based API keys, and pending approvals that survive restarts.
+- A 28-scenario fault-injection benchmark with known root causes and distractor deploys, scored on root-cause accuracy, tool-call precision, steps, time to diagnosis and token cost. GitHub Actions runs all 28 deterministically, on simulated telemetry with a rule-based playbook model, to test the harness end to end. Results with a hosted LLM are not published yet.
+- An OpenTelemetry trace per investigation and a cost estimate per incident. The Kustomize manifests (with Loki and Grafana Alloy for logs) are rendered and validated with kubeconform in CI but have not been run on a real cluster.
 
-**[Repo](https://github.com/shreyashyadav1/intelliclaim-ai)**
+LangGraph · MCP · FastAPI · Spring Boot · Next.js · TypeScript · PostgreSQL · Prometheus · OpenTelemetry · Docker
 
-Pulls structured claim data out of medical reports, invoices and policy documents.
+### Switchyard: LLM gateway in Go
 
-- Extracts 11 claim fields with Tesseract OCR for scanned pages and Pydantic-validated, allow-listed model output
-- Hybrid BM25 + vector retrieval raised top-5 recall from 65% to 91% on a 216-question labeled benchmark, with cited answers
-- 460+ pytest tests in CI
-- **Groq (GPT-OSS 120B) · LangChain · LlamaIndex · ChromaDB · FastEmbed · FastAPI · React · MongoDB Atlas · Docker**
+[Repository](https://github.com/shreyashyadav1/switchyard)
 
-### Emergency Response MAS: Multi-Agent Coordination
+An OpenAI-compatible gateway in front of Groq, OpenRouter, OpenAI and self-hosted vLLM. Clients keep their OpenAI SDK and change only the base URL; OpsPilot can send its model calls through it.
 
-**[Repo](https://github.com/shreyashyadav1/emergency-response-mas)**
+- Per-key token-bucket rate limits and daily dollar budgets, retries with backoff and jitter, fallback to the next provider, and a circuit breaker per provider and model that skips a failing target for a cooldown.
+- Token and cost accounting on every response, an exact-match response cache, Prometheus metrics, and OpenTelemetry spans that join the caller's trace.
+- Adds about 44 µs per non-streaming request over a direct call to a local fake upstream (median of 10 runs on an Apple M3: 78.9 µs against 34.7 µs). Streaming, the cache, retries, failover and a deployed instance are not measured ([docs/BENCHMARKS.md](https://github.com/shreyashyadav1/switchyard/blob/main/docs/BENCHMARKS.md)).
+- A Terraform module for Google Cloud Run sized for the free tier, and Kustomize manifests for Kubernetes; CI runs `terraform validate` and kubeconform on them.
 
-Four agents that negotiate ambulances, ER beds and staff during simulated mass-casualty events.
+Go · OpenTelemetry · Prometheus · Terraform · Cloud Run · Kustomize
 
-- Built on the OpenAI Agents SDK with a reproducible, seeded emergency simulator
-- Across a 600-run paired experiment, the negotiation protocol raised severity-weighted survival 5.6 to 6.7 points over the best baseline
-- Streamlit and Plotly dashboard to replay every decision, plus 60 automated tests
-- **OpenAI Agents SDK · GPT-4o-mini · Python · Streamlit · Plotly · pytest · Playwright**
+### IntelliClaim AI: insurance document intelligence
 
-### Switchyard: LLM Gateway in Go
+[Repository](https://github.com/shreyashyadav1/intelliclaim-ai) · [Frontend](https://intelliclaim-ai.vercel.app) (backend hosting is paused, so the site shows a "demo server offline" notice)
 
-**[Repo](https://github.com/shreyashyadav1/switchyard)**
+Reads claim PDFs and scans (PyMuPDF for text layers, Tesseract OCR for scanned pages), extracts eleven claim fields with an LLM into Pydantic-validated, allow-listed output, answers questions over the documents with page citations, and scores each claim's risk with rules plus an optional LLM review.
 
-An OpenAI-compatible gateway that gives every model request the same handling.
+Measured on a synthetic, labelled dataset of 60 fictional documents, 216 answerable questions and 206 claims ([method and caveats](https://github.com/shreyashyadav1/intelliclaim-ai/blob/master/backend/evals/README.md)):
 
-- Per-key rate limits and daily budgets, retries with backoff, and fallback across Groq, OpenRouter and vLLM
-- Token and cost accounting, Prometheus metrics and OpenTelemetry traces
-- **Go · OpenTelemetry · Prometheus · Terraform · Cloud Run**
+- Retrieval: top-5 recall went from 0.653 with vector search to 0.907 with hybrid BM25 + vector search, and to 1.000 once chunks containing the exact document number named in the question go first. That last step was designed on this dataset's misses, so the 1.000 is in-sample.
+- RAG answers through the API with Groq `gpt-oss-120b`: 216 of 216 correct after the retrieval fixes, up from 189 of 215 before them, with citation precision 1.000. Also in-sample.
+- Extraction: micro-F1 0.986 on the 60 synthetic documents (text-layer PDFs). In-sample as well, because the prompt was fixed after looking at failures on the same documents.
+- Risk scoring: PR-AUC 0.805 for the rules alone and 0.883 with the LLM review, on the 206 synthetic claims.
 
-### MeetSense AI: Real-Time Meeting Intelligence
+It also has an MCP server with four read-only tools for agents, OpenTelemetry tracing that records the tokens and cost of every model call and adds the spend to the document or claim, and 531 backend tests (91% line coverage) that run in CI next to an evaluation job that fails when a metric drops below its threshold.
 
-**[Repo](https://github.com/shreyashyadav1/MeetSense)**
+FastAPI · Groq · LangChain · LlamaIndex · ChromaDB · fastembed · MongoDB · React · MCP · OpenTelemetry · Docker
 
-Turns live audio into a searchable, structured record of a meeting.
+### MeetSense: real-time meeting transcription
 
-- Live transcription with speaker diarization streamed over WebSockets via Deepgram nova-2
-- Versioned WebSocket protocol that keeps transcripts ordered across reconnects, load-tested to 200 concurrent streams
-- Summaries, action items and decisions generated from finalized transcript segments
-- **React 19 · TypeScript · FastAPI · Deepgram · WebSockets · Redis · PostgreSQL · Groq**
+[Repository](https://github.com/shreyashyadav1/MeetSense) · [Frontend](https://meet-sense.vercel.app) (backend hosting is paused, so the site shows a "demo server offline" notice)
+
+The browser streams microphone audio over a WebSocket to FastAPI, which forwards it to Deepgram (nova-2 with speaker diarization). Final transcript segments get a per-meeting sequence number and fan out to every viewer, relayed through Redis when it is available. From the transcript, Groq (`gpt-oss-120b`) writes a summary, action items, decisions, open questions and a follow-up email as validated JSON.
+
+- Load test: 200 concurrent streaming meetings with transcript delivery (server emit to client receive) at p95 2.2 ms, and no errors, sequence gaps or duplicates. It ran in mock transcription mode with the server and the load generator on one 8 GB laptop, so it measures the server's WebSocket path, not Deepgram ([loadtest/RESULTS.md](https://github.com/shreyashyadav1/MeetSense/blob/master/loadtest/RESULTS.md)).
+- Exports approved action items to GitHub Issues idempotently: each issue carries a hidden marker with a hash of its action item, so a retry or a double click reuses the existing issue instead of filing a duplicate.
+
+React 19 · TypeScript · FastAPI · WebSockets · Deepgram · Groq · Redis · PostgreSQL
+
+### Emergency Response MAS: multi-agent coordination (course project)
+
+[Repository](https://github.com/shreyashyadav1/emergency-response-mas)
+
+Four kinds of agents coordinate ambulances, hospitals and staff in a seeded mass-casualty simulator and negotiate when their goals conflict. Across 600 runs on synthetic scenarios, paired by seed, the agents with negotiation beat the best baseline at every stress level by +0.056 to +0.067 weighted survival (p < 0.001). A version built on the OpenAI Agents SDK (`gpt-4o-mini`) also beats both baselines but trails the rule-based agents slightly. A Streamlit dashboard replays each run minute by minute.
+
+Python · OpenAI Agents SDK · Streamlit · Plotly · pytest
 
 ---
 
 ## Tech Stack
 
-**AI / ML**
-
-![LangChain](https://img.shields.io/badge/LangChain-000000?style=flat&logo=chainlink&logoColor=white)
-![LangGraph](https://img.shields.io/badge/LangGraph-1C3C3C?style=flat&logoColor=white)
-![LlamaIndex](https://img.shields.io/badge/LlamaIndex-6929C4?style=flat&logoColor=white)
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)
-![Groq](https://img.shields.io/badge/Groq-F55036?style=flat&logoColor=white)
-![ChromaDB](https://img.shields.io/badge/ChromaDB-1A1A2E?style=flat&logoColor=white)
-
-**Languages**
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
-![Go](https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white)
-
-**Backend**
-
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat&logo=springboot&logoColor=white)
-
-**Frontend**
-
-![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
-
-**Databases**
-
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white)
-
-**Infrastructure**
-
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazonwebservices&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=githubactions&logoColor=white)
-![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat&logo=prometheus&logoColor=white)
-
----
-
-<p align="center">
-  <a href="mailto:shreyashyadav.work@gmail.com">shreyashyadav.work@gmail.com</a>
-  &nbsp;·&nbsp;
-  <a href="https://www.linkedin.com/in/shreyashyadavai">LinkedIn</a>
-  &nbsp;·&nbsp;
-  <a href="https://shreyashyadav.vercel.app">Portfolio</a>
-</p>
+- **Languages:** Python, TypeScript, Go, Java
+- **AI and LLMs:** LangGraph, LangChain, LlamaIndex, MCP, OpenAI, Groq, ChromaDB
+- **Backend:** FastAPI, Node.js, Spring Boot
+- **Frontend:** React, Next.js
+- **Databases:** PostgreSQL, MongoDB, Redis
+- **Infrastructure and observability:** Docker, GitHub Actions, AWS, Terraform, Kustomize, Prometheus, OpenTelemetry
